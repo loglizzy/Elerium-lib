@@ -1214,7 +1214,7 @@ function library:AddWindow(title, options)
 
 						function switch_data:Set(bool)
 							toggled = (typeof(bool) == "boolean") and bool or false
-							switch.Text = toggled and utf8.char(10003) or ""
+							switch.BackgroundColor3 = toggled and Color3.new(1,1,1) or ui_options.main_color
 							pcall(callback,toggled)
 						end
 
