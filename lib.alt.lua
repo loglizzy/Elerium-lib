@@ -1208,7 +1208,7 @@ function library:AddWindow(title, options)
 						local toggled = false
 						switch.MouseButton1Click:Connect(function()
 							toggled = not toggled
-							switch.Text = toggled and utf8.char(10003) or ""
+							switch.BackgroundColor3 = toggled and Color3.new(1,1,1) or ui_options.main_color
 							pcall(callback, toggled)
 						end)
 
