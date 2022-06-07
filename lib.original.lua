@@ -1,4 +1,8 @@
--- not mine, just for http requests
+--[[
+	ui-engine-v2
+	version 1.3a
+	by Singularity (V3rm @ King Singularity) (Discord @ Singularity#5490)
+--]]
 
 local ui_options = {
 	main_color = Color3.fromRGB(41, 74, 122),
@@ -1208,13 +1212,13 @@ function library:AddWindow(title, options)
 						local toggled = false
 						switch.MouseButton1Click:Connect(function()
 							toggled = not toggled
-							switch.BackgroundColor3 = toggled and Color3.new(1,1,1) or ui_options.main_color
+							switch.Text = toggled and utf8.char(10003) or ""
 							pcall(callback, toggled)
 						end)
 
 						function switch_data:Set(bool)
 							toggled = (typeof(bool) == "boolean") and bool or false
-							switch.BackgroundColor3 = toggled and Color3.new(1,1,1) or ui_options.main_color
+							switch.Text = toggled and utf8.char(10003) or ""
 							pcall(callback,toggled)
 						end
 
