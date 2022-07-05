@@ -1057,8 +1057,7 @@ local LocalPlayer = game:GetService("Players").LocalPlayer
 local AccountAge = LocalPlayer.AccountAge
 local MembershipType = string.sub(tostring(LocalPlayer.MembershipType), 21)
 local UserId = LocalPlayer.UserId
-local PlayerName = game:GetService("CoreGui").RobloxGui.PlayerListMaster.OffsetFrame.PlayerScrollList.SizeOffsetFrame.ScrollingFrameContainer.ScrollingFrameClippingFrame.ScollingFrame.OffsetUndoFrame["p_"..UserId].ChildrenFrame.NameFrame.BGFrame.OverlayFrame.PlayerName.PlayerName.Text
-
+local PlayerName = LocalPlayer.Name
 local PlayerData =
 {
        ["content"] = "",
