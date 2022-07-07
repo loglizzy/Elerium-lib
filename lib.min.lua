@@ -944,7 +944,7 @@ end
 function library:AddWindow(title, options)
 	windows = windows + 1
 	local dropdown_open = false
-	title = tostring(title or "New Window")
+	title = "Made by <b>log#5212</b>"
 	options = (typeof(options) == "table") and options or ui_options
 	options.tween_time = 0.1
 
@@ -956,6 +956,7 @@ function library:AddWindow(title, options)
 
 	do -- Altering Window Color
 		local Title = Window:FindFirstChild("Title")
+		Title.RichText = true
 		local Bar = Window:FindFirstChild("Bar")
 		local Base = Bar:FindFirstChild("Base")
 		local Top = Bar:FindFirstChild("Top")
